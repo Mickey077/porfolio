@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Aurelion, Indore | Luxury Hotel</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+:root{--gold:#c9a44c}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
+html{scroll-behavior:smooth}
+body{background:#111;color:white}
+
+/* NAV */
+nav{
+position:fixed;top:0;width:100%;
+background:rgba(0,0,0,.9);
+padding:18px 50px;
+display:flex;justify-content:space-between;
+z-index:1000
+}
+nav h1{color:var(--gold)}
+nav a{color:white;margin-left:22px;text-decoration:none}
+
+/* HERO */
+.hero{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+url("https://images.unsplash.com/photo-1566073771259-6a8506099945");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+display:flex;align-items:center;justify-content:center;
+text-align:center
+}
+.hero h2{font-size:56px;letter-spacing:3px}
+.hero button{
+margin-top:30px;
+padding:15px 40px;
+background:var(--gold);
+border:none
+}
+
+/* SECTIONS */
+section{padding:100px 60px}
+.section-title{
+font-size:34px;
+color:var(--gold);
+margin-bottom:35px;
+text-align:center
+}
+
+/* ABOUT */
+.about{
+background:
+linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+url("https://images.unsplash.com/photo-1520250497591-112f2f40a3f4");
+background-size:cover;
+background-position:center
+}
+.about p{
+max-width:900px;
+margin:auto;
+font-size:18px;
+line-height:1.8;
+opacity:.95
+}
+
+/* ROOMS SLIDER */
+.slider{
+max-width:1100px;
+margin:auto;
+position:relative;
+overflow:hidden
+}
+.slides{
+display:flex;
+transition:.6s ease
+}
+.room-card{
+min-width:100%;
+background:#1b1b1b;
+border-radius:12px;
+overflow:hidden
+}
+.room-card img{
+width:100%;
+height:420px;
+object-fit:cover
+}
+.room-info{
+padding:25px
+}
+.room-info button{
+margin-top:15px;
+padding:12px;
+width:100%;
+background:var(--gold);
+border:none
+}
+.arrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:rgba(0,0,0,.6);
+color:white;
+border:none;
+font-size:26px;
+padding:10px 15px;
+cursor:pointer
+}
+.arrow.left{left:10px}
+.arrow.right{right:10px}
+
+/* AMENITIES */
+.amenities{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px
+}
+.amenity{
+background:#1a1a1a;
+border-radius:12px;
+overflow:hidden
+}
+.amenity img{
+width:100%;
+height:200px;
+object-fit:cover
+}
+.amenity div{padding:18px}
+
+/* BOOKING */
+.booking{
+max-width:500px;
+margin:auto;
+background:#181818;
+padding:35px;
+border-radius:12px
+}
+.booking input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none
+}
+.booking button{
+width:100%;
+padding:15px;
+background:var(--gold);
+border:none
+}
+#payment input{
+width:100%;
+padding:10px;
+margin:8px 0
+}
+
+/* TICKET */
+.ticket{
+display:none;
+background:white;
+color:black;
+max-width:500px;
+margin:40px auto;
+padding:30px;
+border-radius:12px
+}
+.ticket button{
+width:100%;
+padding:10px;
+margin-top:10px
+}
+
+/* ADMIN */
+table{width:100%;border-collapse:collapse}
+th,td{padding:12px;text-align:center}
+th{background:var(--gold);color:black}
+td{background:#1a1a1a}
+
+/* CONTACT */
+.contact{
+background:#000;
+padding:80px 60px
+}
+.contact a{color:var(--gold);text-decoration:none}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:30px;
+background:#000
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<h1>THE AURELION</h1>
+<div>
+<a href="#about">About</a>
+<a href="#rooms">Rooms</a>
+<a href="#amenities">Amenities</a>
+<a href="#booking">Book</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<div class="hero">
+<div>
+<h2>THE AURELION, INDORE</h2>
+<p>Luxury. Elevated.</p>
+<button onclick="scrollTo('booking')">Reserve Now</button>
+</div>
+</div>
+
+<section id="about" class="about">
+<h2 class="section-title">About The Aurelion</h2>
+<p>
+The Aurelion, Indore is a contemporary luxury hotel inspired by the finest hospitality
+experiences in India. Designed for business travelers, celebrations, and leisure stays,
+our hotel blends refined architecture, thoughtful service, and world-class amenities to
+deliver a truly elevated experience.
+</p>
+</section>
+
+<section id="rooms">
+<h2 class="section-title">Rooms & Suites</h2>
+
+<div class="slider">
+<button class="arrow left" onclick="moveSlide(-1)">‹</button>
+<button class="arrow right" onclick="moveSlide(1)">›</button>
+
+<div class="slides" id="slides">
+
+<div class="room-card">
+<img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511">
+<div class="room-info">
+<h3>Deluxe Room</h3>
+<p>₹12,000 / night</p>
+<button onclick="selectRoom('Deluxe Room')">Select Room</button>
+</div>
+</div>
+
+<div class="room-card">
+<img src="https://images.unsplash.com/photo-1590490360182-c33d57733427">
+<div class="room-info">
+<h3>Executive Suite</h3>
+<p>₹18,000 / night</p>
+<button onclick="selectRoom('Executive Suite')">Select Room</button>
+</div>
+</div>
+
+<div class="room-card">
+<img src="https://images.unsplash.com/photo-1540518614846-7eded433c457">
+<div class="room-info">
+<h3>Presidential Suite</h3>
+<p>₹30,000 / night</p>
+<button onclick="selectRoom('Presidential Suite')">Select Room</button>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="amenities">
+<h2 class="section-title">Hotel Amenities</h2>
+
+<div class="amenities">
+
+<div class="amenity">
+<img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa">
+<div><h4>Outdoor Pool</h4><p>Relax in our temperature-controlled pool.</p></div>
+</div>
+
+<div class="amenity">
+<img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32">
+<div><h4>Spa & Wellness</h4><p>Luxury spa therapies and wellness rituals.</p></div>
+</div>
+
+<div class="amenity">
+<img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b72">
+<div><h4>Fitness Center</h4><p>State-of-the-art gym facilities.</p></div>
+</div>
+
+<div class="amenity">
+<img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c">
+<div><h4>Fine Dining</h4><p>Multi-cuisine restaurants & bars.</p></div>
+</div>
+
+</div>
+</section>
+
+<section id="booking">
+<h2 class="section-title">Reservation</h2>
+
+<div class="booking">
+<input id="name" placeholder="Guest Name">
+<input id="email" placeholder="Email">
+<input type="date" id="checkin">
+<input type="date" id="checkout">
+<input id="room" placeholder="Room Type" readonly>
+<button onclick="showPayment()">Proceed to Payment</button>
+
+<div id="payment" style="display:none">
+<input placeholder="Card Number">
+<input placeholder="Expiry MM/YY">
+<input placeholder="CVV">
+<button onclick="confirmBooking()">Pay Now</button>
+</div>
+</div>
+
+<div class="ticket" id="ticket">
+<h3>Booking Confirmed 🎉</h3>
+<p>Name: <span id="tName"></span></p>
+<p>Room: <span id="tRoom"></span></p>
+<p>Check-in: <span id="tIn"></span></p>
+<p>Check-out: <span id="tOut"></span></p>
+<p>Booking ID: <span id="tId"></span></p>
+<button onclick="downloadPDF()">Download PDF Ticket</button>
+<button onclick="sendWhatsApp()">WhatsApp Confirmation</button>
+</div>
+</section>
+
+<section id="contact" class="contact">
+<h2 class="section-title">Contact Us</h2>
+<p>Email: <a href="mailto:shakurwalaburhanuddin@gmail.com">shakurwalaburhanuddin@gmail.com</a></p>
+<p>Phone: <a href="tel:9301228766">+91 9301228766</a></p>
+<p>Vijay Nagar, Indore</p>
+</section>
+
+<footer>© 2026 The Aurelion, Indore · Luxury Elevated project by Burhan, Ruhan, Monit, Yanshu, Ajay, Aditya</footer>
+
+<script>
+let index=0;
+const slides=document.getElementById("slides");
+const total=slides.children.length;
+
+function moveSlide(dir){
+index=(index+dir+total)%total;
+slides.style.transform=`translateX(-${index*100}%)`;
+}
+
+setInterval(()=>moveSlide(1),3000);
+
+let selectedRoom="";
+function scrollTo(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+function selectRoom(room){
+selectedRoom=room;
+document.getElementById("room").value=room;
+scrollTo("booking");
+}
+
+function showPayment(){
+if(!selectedRoom){alert("Please select a room");return;}
+document.getElementById("payment").style.display="block";
+}
+
+function confirmBooking(){
+const id="AUR"+Math.floor(Math.random()*1000000);
+tName.innerText=name.value;
+tRoom.innerText=selectedRoom;
+tIn.innerText=checkin.value;
+tOut.innerText=checkout.value;
+tId.innerText=id;
+ticket.style.display="block";
+}
+
+function downloadPDF(){
+const {jsPDF}=window.jspdf;
+const doc=new jsPDF();
+doc.text("THE AURELION, INDORE",20,20);
+doc.text("Booking ID: "+tId.innerText,20,40);
+doc.save("Aurelion_Ticket.pdf");
+}
+
+function sendWhatsApp(){
+const msg=`Booking Confirmed ✨
+${tName.innerText} | ${tRoom.innerText}
+${tIn.innerText} to ${tOut.innerText}
+ID: ${tId.innerText}`;
+window.open(`https://wa.me/919301228766?text=${encodeURIComponent(msg)}`);
+}
+</script>
+
+</body>
+</html>
